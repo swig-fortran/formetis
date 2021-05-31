@@ -179,19 +179,19 @@ function PartGraphRecursive(nvtxs, ncon, xadj, adjncy, vwgt, vsize, adjwgt, npar
 bind(C, name="METIS_PartGraphRecursive") &
 result(fresult)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT32_T) :: nvtxs
-integer(C_INT32_T) :: ncon
-integer(C_INT32_T) :: xadj
-integer(C_INT32_T) :: adjncy
-integer(C_INT32_T) :: vwgt
-integer(C_INT32_T) :: vsize
-integer(C_INT32_T) :: adjwgt
-integer(C_INT32_T) :: nparts
-real(C_FLOAT) :: tpwgts
-real(C_FLOAT) :: ubvec
-integer(C_INT32_T) :: options
-integer(C_INT32_T) :: edgecut
-integer(C_INT32_T) :: part
+integer(C_INT32_T), dimension(*), target :: nvtxs
+integer(C_INT32_T), dimension(*), target :: ncon
+integer(C_INT32_T), dimension(*), target :: xadj
+integer(C_INT32_T), dimension(*), target :: adjncy
+integer(C_INT32_T), dimension(*), target :: vwgt
+integer(C_INT32_T), dimension(*), target :: vsize
+integer(C_INT32_T), dimension(*), target :: adjwgt
+integer(C_INT32_T), dimension(*), target :: nparts
+real(C_FLOAT), dimension(*), target :: tpwgts
+real(C_FLOAT), dimension(*), target :: ubvec
+integer(C_INT32_T), dimension(*), target :: options
+integer(C_INT32_T), dimension(*), target :: edgecut
+integer(C_INT32_T), dimension(*), target :: part
 integer(C_INT) :: fresult
 end function
 
@@ -199,19 +199,19 @@ function PartGraphKway(nvtxs, ncon, xadj, adjncy, vwgt, vsize, adjwgt, nparts, t
 bind(C, name="METIS_PartGraphKway") &
 result(fresult)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT32_T) :: nvtxs
-integer(C_INT32_T) :: ncon
-integer(C_INT32_T) :: xadj
-integer(C_INT32_T) :: adjncy
-integer(C_INT32_T) :: vwgt
-integer(C_INT32_T) :: vsize
-integer(C_INT32_T) :: adjwgt
-integer(C_INT32_T) :: nparts
-real(C_FLOAT) :: tpwgts
-real(C_FLOAT) :: ubvec
-integer(C_INT32_T) :: options
-integer(C_INT32_T) :: edgecut
-integer(C_INT32_T) :: part
+integer(C_INT32_T), dimension(*), target :: nvtxs
+integer(C_INT32_T), dimension(*), target :: ncon
+integer(C_INT32_T), dimension(*), target :: xadj
+integer(C_INT32_T), dimension(*), target :: adjncy
+integer(C_INT32_T), dimension(*), target :: vwgt
+integer(C_INT32_T), dimension(*), target :: vsize
+integer(C_INT32_T), dimension(*), target :: adjwgt
+integer(C_INT32_T), dimension(*), target :: nparts
+real(C_FLOAT), dimension(*), target :: tpwgts
+real(C_FLOAT), dimension(*), target :: ubvec
+integer(C_INT32_T), dimension(*), target :: options
+integer(C_INT32_T), dimension(*), target :: edgecut
+integer(C_INT32_T), dimension(*), target :: part
 integer(C_INT) :: fresult
 end function
 
@@ -219,12 +219,12 @@ function MeshToDual(ne, nn, eptr, eind, ncommon, numflag, r_xadj, r_adjncy) &
 bind(C, name="METIS_MeshToDual") &
 result(fresult)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT32_T) :: ne
-integer(C_INT32_T) :: nn
-integer(C_INT32_T) :: eptr
-integer(C_INT32_T) :: eind
-integer(C_INT32_T) :: ncommon
-integer(C_INT32_T) :: numflag
+integer(C_INT32_T), dimension(*), target :: ne
+integer(C_INT32_T), dimension(*), target :: nn
+integer(C_INT32_T), dimension(*), target :: eptr
+integer(C_INT32_T), dimension(*), target :: eind
+integer(C_INT32_T), dimension(*), target :: ncommon
+integer(C_INT32_T), dimension(*), target :: numflag
 type(C_PTR), value :: r_xadj
 type(C_PTR), value :: r_adjncy
 integer(C_INT) :: fresult
@@ -234,11 +234,11 @@ function MeshToNodal(ne, nn, eptr, eind, numflag, r_xadj, r_adjncy) &
 bind(C, name="METIS_MeshToNodal") &
 result(fresult)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT32_T) :: ne
-integer(C_INT32_T) :: nn
-integer(C_INT32_T) :: eptr
-integer(C_INT32_T) :: eind
-integer(C_INT32_T) :: numflag
+integer(C_INT32_T), dimension(*), target :: ne
+integer(C_INT32_T), dimension(*), target :: nn
+integer(C_INT32_T), dimension(*), target :: eptr
+integer(C_INT32_T), dimension(*), target :: eind
+integer(C_INT32_T), dimension(*), target :: numflag
 type(C_PTR), value :: r_xadj
 type(C_PTR), value :: r_adjncy
 integer(C_INT) :: fresult
@@ -248,18 +248,18 @@ function PartMeshNodal(ne, nn, eptr, eind, vwgt, vsize, nparts, tpwgts, options,
 bind(C, name="METIS_PartMeshNodal") &
 result(fresult)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT32_T) :: ne
-integer(C_INT32_T) :: nn
-integer(C_INT32_T) :: eptr
-integer(C_INT32_T) :: eind
-integer(C_INT32_T) :: vwgt
-integer(C_INT32_T) :: vsize
-integer(C_INT32_T) :: nparts
-real(C_FLOAT) :: tpwgts
-integer(C_INT32_T) :: options
-integer(C_INT32_T) :: objval
-integer(C_INT32_T) :: epart
-integer(C_INT32_T) :: npart
+integer(C_INT32_T), dimension(*), target :: ne
+integer(C_INT32_T), dimension(*), target :: nn
+integer(C_INT32_T), dimension(*), target :: eptr
+integer(C_INT32_T), dimension(*), target :: eind
+integer(C_INT32_T), dimension(*), target :: vwgt
+integer(C_INT32_T), dimension(*), target :: vsize
+integer(C_INT32_T), dimension(*), target :: nparts
+real(C_FLOAT), dimension(*), target :: tpwgts
+integer(C_INT32_T), dimension(*), target :: options
+integer(C_INT32_T), dimension(*), target :: objval
+integer(C_INT32_T), dimension(*), target :: epart
+integer(C_INT32_T), dimension(*), target :: npart
 integer(C_INT) :: fresult
 end function
 
@@ -267,19 +267,19 @@ function PartMeshDual(ne, nn, eptr, eind, vwgt, vsize, ncommon, nparts, tpwgts, 
 bind(C, name="METIS_PartMeshDual") &
 result(fresult)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT32_T) :: ne
-integer(C_INT32_T) :: nn
-integer(C_INT32_T) :: eptr
-integer(C_INT32_T) :: eind
-integer(C_INT32_T) :: vwgt
-integer(C_INT32_T) :: vsize
-integer(C_INT32_T) :: ncommon
-integer(C_INT32_T) :: nparts
-real(C_FLOAT) :: tpwgts
-integer(C_INT32_T) :: options
-integer(C_INT32_T) :: objval
-integer(C_INT32_T) :: epart
-integer(C_INT32_T) :: npart
+integer(C_INT32_T), dimension(*), target :: ne
+integer(C_INT32_T), dimension(*), target :: nn
+integer(C_INT32_T), dimension(*), target :: eptr
+integer(C_INT32_T), dimension(*), target :: eind
+integer(C_INT32_T), dimension(*), target :: vwgt
+integer(C_INT32_T), dimension(*), target :: vsize
+integer(C_INT32_T), dimension(*), target :: ncommon
+integer(C_INT32_T), dimension(*), target :: nparts
+real(C_FLOAT), dimension(*), target :: tpwgts
+integer(C_INT32_T), dimension(*), target :: options
+integer(C_INT32_T), dimension(*), target :: objval
+integer(C_INT32_T), dimension(*), target :: epart
+integer(C_INT32_T), dimension(*), target :: npart
 integer(C_INT) :: fresult
 end function
 
@@ -287,13 +287,13 @@ function NodeND(nvtxs, xadj, adjncy, vwgt, options, perm, iperm) &
 bind(C, name="METIS_NodeND") &
 result(fresult)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT32_T) :: nvtxs
-integer(C_INT32_T) :: xadj
-integer(C_INT32_T) :: adjncy
-integer(C_INT32_T) :: vwgt
-integer(C_INT32_T) :: options
-integer(C_INT32_T) :: perm
-integer(C_INT32_T) :: iperm
+integer(C_INT32_T), dimension(*), target :: nvtxs
+integer(C_INT32_T), dimension(*), target :: xadj
+integer(C_INT32_T), dimension(*), target :: adjncy
+integer(C_INT32_T), dimension(*), target :: vwgt
+integer(C_INT32_T), dimension(*), target :: options
+integer(C_INT32_T), dimension(*), target :: perm
+integer(C_INT32_T), dimension(*), target :: iperm
 integer(C_INT) :: fresult
 end function
 
@@ -309,7 +309,7 @@ function SetDefaultOptions(options) &
 bind(C, name="METIS_SetDefaultOptions") &
 result(fresult)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT32_T) :: options
+integer(C_INT32_T), dimension(*), target :: options
 integer(C_INT) :: fresult
 end function
 
@@ -318,14 +318,14 @@ bind(C, name="METIS_NodeNDP") &
 result(fresult)
 use, intrinsic :: ISO_C_BINDING
 integer(C_INT32_T), intent(in), value :: nvtxs
-integer(C_INT32_T) :: xadj
-integer(C_INT32_T) :: adjncy
-integer(C_INT32_T) :: vwgt
+integer(C_INT32_T), dimension(*), target :: xadj
+integer(C_INT32_T), dimension(*), target :: adjncy
+integer(C_INT32_T), dimension(*), target :: vwgt
 integer(C_INT32_T), intent(in), value :: npes
-integer(C_INT32_T) :: options
-integer(C_INT32_T) :: perm
-integer(C_INT32_T) :: iperm
-integer(C_INT32_T) :: sizes
+integer(C_INT32_T), dimension(*), target :: options
+integer(C_INT32_T), dimension(*), target :: perm
+integer(C_INT32_T), dimension(*), target :: iperm
+integer(C_INT32_T), dimension(*), target :: sizes
 integer(C_INT) :: fresult
 end function
 
@@ -333,13 +333,13 @@ function ComputeVertexSeparator(nvtxs, xadj, adjncy, vwgt, options, sepsize, par
 bind(C, name="METIS_ComputeVertexSeparator") &
 result(fresult)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT32_T) :: nvtxs
-integer(C_INT32_T) :: xadj
-integer(C_INT32_T) :: adjncy
-integer(C_INT32_T) :: vwgt
-integer(C_INT32_T) :: options
-integer(C_INT32_T) :: sepsize
-integer(C_INT32_T) :: part
+integer(C_INT32_T), dimension(*), target :: nvtxs
+integer(C_INT32_T), dimension(*), target :: xadj
+integer(C_INT32_T), dimension(*), target :: adjncy
+integer(C_INT32_T), dimension(*), target :: vwgt
+integer(C_INT32_T), dimension(*), target :: options
+integer(C_INT32_T), dimension(*), target :: sepsize
+integer(C_INT32_T), dimension(*), target :: part
 integer(C_INT) :: fresult
 end function
 
@@ -348,11 +348,11 @@ bind(C, name="METIS_NodeRefine") &
 result(fresult)
 use, intrinsic :: ISO_C_BINDING
 integer(C_INT32_T), intent(in), value :: nvtxs
-integer(C_INT32_T) :: xadj
-integer(C_INT32_T) :: vwgt
-integer(C_INT32_T) :: adjncy
-integer(C_INT32_T) :: where
-integer(C_INT32_T) :: hmarker
+integer(C_INT32_T), dimension(*), target :: xadj
+integer(C_INT32_T), dimension(*), target :: vwgt
+integer(C_INT32_T), dimension(*), target :: adjncy
+integer(C_INT32_T), dimension(*), target :: where
+integer(C_INT32_T), dimension(*), target :: hmarker
 real(C_FLOAT), intent(in), value :: ubfactor
 integer(C_INT) :: fresult
 end function

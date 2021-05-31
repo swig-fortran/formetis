@@ -31,6 +31,9 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 endif()
 option(FORMETIS_BUILD_EXAMPLES "Build examples" ${_default_build_examples})
 
+# Declare fortran standard (e.g. 03) options and compiler flags
+flib_fortran_standard(FORMETIS)
+
 #---------------------------------------------------------------------------#
 # MODULES TO LOAD
 #---------------------------------------------------------------------------#
