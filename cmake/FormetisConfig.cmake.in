@@ -1,22 +1,31 @@
 get_filename_component(Formetis_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
 include(CMakeFindDependencyMacro)
 
-list(APPEND CMAKE_MODULE_PATH ${Formetis_CMAKE_DIR})
+list(APPEND CMAKE_MODULE_PATH "${Formetis_CMAKE_DIR}")
 
-if(NOT TARGET @FLIBHPC_NAMESPACE@formetis)
+if(NOT TARGET @Formetis_NAMESPACE@formetis)
   include("${Formetis_CMAKE_DIR}/FormetisTargets.cmake")
 endif()
 
-set(Formetis_LIBRARIES @FLIBHPC_LIBRARIES@)
+set(Formetis_LIBRARIES @Formetis_LIBRARIES@)
 
-set(FLIBHPC_BUILD_SHARED_LIBS @BUILD_SHARED_LIBS@)
-set(FLIBHPC_USE_SWIG          @FLIBHPC_USE_SWIG@)
-set(FLIBHPC_FORTRAN_STD       @FLIBHPC_FORTRAN_STD@)
-set(FLIBHPC_SWIG_EXECUTABLE   @FLIBHPC_SWIG_EXECUTABLE@)
-set(FLIBHPC_SWIG_DIR          @FLIBHPC_SWIG_DIR@)
+set(FORMETIS_BUILD_SHARED_LIBS @BUILD_SHARED_LIBS@)
+set(FORMETIS_USE_MPI           @FORMETIS_USE_MPI@)
+set(FORMETIS_USE_SWIG          @FORMETIS_USE_SWIG@)
+set(FORMETIS_Fortran_STANDARD  @FORMETIS_Fortran_STANDARD@)
+if(FORMETIS_USE_SWIG)
+  set(FORMETIS_SWIG_EXECUTABLE   @SWIG_EXECUTABLE@)
+  set(FORMETIS_SWIG_DIR          @SWIG_DIR@)
+endif()
+if(FORMETIS_USE_MPI)
+  set(FORMETIS_MPIEXEC_EXECUTABLE @MPIEXEC_EXECUTABLE@)
+endif()
 
-if(NOT FLIBHPC_BUILD_SHARED_LIBS)
-  # Downstream libraries must find and link to the C++ runtimes themselves since
-  # they can't use the shared library dependencies
-  enable_language(CXX)
+### DEPENDENCIES ###
+
+find_dependency(METIS)
+
+if(FORMETIS_USE_MPI)
+  find_dependency(MPI)
+  find_dependency(ParMETIS)
 endif()

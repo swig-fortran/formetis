@@ -33,6 +33,11 @@ option(FORMETIS_BUILD_EXAMPLES "Build examples" ${_default_build_examples})
 # Declare fortran standard (e.g. 03) options and compiler flags
 flib_fortran_standard(FORMETIS)
 
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+  message(STATUS "Set default CMAKE_BUILD_TYPE=Release")
+  set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Build type" FORCE)
+endif()
+
 #---------------------------------------------------------------------------#
 # MODULES TO LOAD
 #---------------------------------------------------------------------------#
@@ -145,5 +150,7 @@ write_basic_package_version_file(
 install(FILES
   "${CMAKE_CURRENT_BINARY_DIR}/FormetisConfig.cmake"
   "${CMAKE_CURRENT_BINARY_DIR}/FormetisConfigVersion.cmake"
+  "${PROJECT_SOURCE_DIR}/cmake/FindMETIS.cmake"
+  "${PROJECT_SOURCE_DIR}/cmake/FindParMETIS.cmake"
   DESTINATION ${FORMETIS_INSTALL_CONFIGDIR}
 )
