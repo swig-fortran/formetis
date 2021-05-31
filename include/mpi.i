@@ -14,7 +14,7 @@
  * compatibility layer to pass the Fortran integers (and convert back to native
  * MPI type in the wrapper result code).
  * ------------------------------------------------------------------------- */
-%apply int { MPI_Comm };
+%apply int { MPI_Comm* };
 
 %typemap(ftype) MPI_Comm
   "integer"
@@ -23,9 +23,10 @@
 %typemap(fout) MPI_Comm
   "$result = int($1)"
 
-%typemap(in, noblock=1) MPI_Comm {
-  $1 = MPI_Comm_f2c((MPI_Fint)*$input);
+%typemap(in, noblock=1) MPI_Comm* (MPI_Comm temp) {
+  temp = MPI_Comm_f2c((MPI_Fint)*$input);
+  $1 = &temp;
 }
-%typemap(out, noblock=1) MPI_Comm {
-  $result = (int)MPI_Comm_c2f($1);
+%typemap(out, noblock=1) MPI_Comm* {
+  $result = (int)MPI_Comm_c2f(*$1);
 }

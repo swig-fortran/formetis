@@ -21,8 +21,8 @@ include(FlibUtils)
 #---------------------------------------------------------------------------#
 
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+option(FORMETIS_USE_MPI "Enable Parmetis and distributed memory parallelism" ON)
 # TODO: change defaults before release
-option(FORMETIS_USE_MPI "Enable Parmetis and distributed memory parallelism" OFF)
 option(FORMETIS_USE_SWIG "Regenerate source files using SWIG" ON)
 
 unset(_default_build_examples)

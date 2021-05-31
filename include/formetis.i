@@ -7,25 +7,7 @@
 
 %module "formetis"
 
-/* -------------------------------------------------------------------------
- * Header definition macros
- * ------------------------------------------------------------------------- */
-
-%define %formetis_add_header
-%insert("fbegin") %{
-! Formetis project, https://github.com/swig-fortran/formetis
-! Copyright (c) 2021 Oak Ridge National Laboratory, UT-Battelle, LLC.
-! Distributed under an MIT open source license: see LICENSE for details.
-%}
-%insert("begin") %{
-/*
- * Formetis project, https://github.com/swig-fortran/formetis
- * Copyright (c) 2021 Oak Ridge National Laboratory, UT-Battelle, LLC.
- * Distributed under an MIT open source license: see LICENSE for details.
- */
-%}
-%enddef
-
+%include "formetis_utils.i"
 %formetis_add_header
 
 /* -------------------------------------------------------------------------
