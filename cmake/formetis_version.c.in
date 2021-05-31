@@ -1,0 +1,4 @@
+const char formetis_version[] = "@Formetis_VERSION_STRING@";
+const int formetis_version_major = @PROJECT_VERSION_MAJOR@;
+const int formetis_version_minor = @PROJECT_VERSION_MINOR@;
+const int formetis_version_patch = @PROJECT_VERSION_PATCH@;
