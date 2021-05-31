@@ -22,8 +22,7 @@ include(FlibUtils)
 
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 option(FORMETIS_USE_MPI "Enable Parmetis and distributed memory parallelism" ON)
-# TODO: change defaults before release
-option(FORMETIS_USE_SWIG "Regenerate source files using SWIG" ON)
+option(FORMETIS_USE_SWIG "Regenerate source files using SWIG" OFF)
 
 unset(_default_build_examples)
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
