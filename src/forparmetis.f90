@@ -280,21 +280,21 @@ end interface
 
 contains
  ! MODULE SUBPROGRAMS
-function get_KEEP_BIT() &
-result(swig_result)
+subroutine get_KEEP_BIT(swig_result)
 use, intrinsic :: ISO_C_BINDING
-integer(C_LONG) :: swig_result
+integer(C_LONG), intent(out), optional :: swig_result
 integer(C_LONG) :: fresult 
 
 fresult = swigc_KEEP_BIT_get()
+if (present(swig_result)) then
 swig_result = fresult
-end function
+endif
 
-function PartKway(vtxdist, xadj, adjncy, vwgt, adjwgt, wgtflag, numflag, ncon, nparts, tpwgts, ubvec, options, edgecut, part, &
-  comm) &
-result(swig_result)
+end subroutine
+
+subroutine PartKway(vtxdist, xadj, adjncy, vwgt, adjwgt, wgtflag, numflag, ncon, nparts, tpwgts, ubvec, options, edgecut, &
+  part, comm, swig_result)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT) :: swig_result
 integer(C_INT32_T), dimension(*), target :: vtxdist
 integer(C_INT32_T), dimension(*), target :: xadj
 integer(C_INT32_T), dimension(*), target :: adjncy
@@ -310,6 +310,7 @@ integer(C_INT32_T), dimension(*), target :: options
 integer(C_INT32_T), dimension(*), target :: edgecut
 integer(C_INT32_T), dimension(*), target :: part
 integer(C_INT), intent(in) :: comm
+integer(C_INT), intent(out), optional :: swig_result
 integer(C_INT) :: fresult 
 type(C_PTR) :: farg1 
 type(C_PTR) :: farg2 
@@ -344,14 +345,15 @@ farg14 = c_loc(part)
 farg15 = comm
 fresult = swigc_PartKway(farg1, farg2, farg3, farg4, farg5, farg6, farg7, farg8, farg9, farg10, farg11, farg12, farg13, &
   farg14, farg15)
+if (present(swig_result)) then
 swig_result = fresult
-end function
+endif
 
-function PartGeomKway(vtxdist, xadj, adjncy, vwgt, adjwgt, wgtflag, numflag, ndims, xyz, ncon, nparts, tpwgts, ubvec, options, &
-  edgecut, part, comm) &
-result(swig_result)
+end subroutine
+
+subroutine PartGeomKway(vtxdist, xadj, adjncy, vwgt, adjwgt, wgtflag, numflag, ndims, xyz, ncon, nparts, tpwgts, ubvec, &
+  options, edgecut, part, comm, swig_result)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT) :: swig_result
 integer(C_INT32_T), dimension(*), target :: vtxdist
 integer(C_INT32_T), dimension(*), target :: xadj
 integer(C_INT32_T), dimension(*), target :: adjncy
@@ -369,6 +371,7 @@ integer(C_INT32_T), dimension(*), target :: options
 integer(C_INT32_T), dimension(*), target :: edgecut
 integer(C_INT32_T), dimension(*), target :: part
 integer(C_INT), intent(in) :: comm
+integer(C_INT), intent(out), optional :: swig_result
 integer(C_INT) :: fresult 
 type(C_PTR) :: farg1 
 type(C_PTR) :: farg2 
@@ -407,18 +410,20 @@ farg16 = c_loc(part)
 farg17 = comm
 fresult = swigc_PartGeomKway(farg1, farg2, farg3, farg4, farg5, farg6, farg7, farg8, farg9, farg10, farg11, farg12, farg13, &
   farg14, farg15, farg16, farg17)
+if (present(swig_result)) then
 swig_result = fresult
-end function
+endif
 
-function PartGeom(vtxdist, ndims, xyz, part, comm) &
-result(swig_result)
+end subroutine
+
+subroutine PartGeom(vtxdist, ndims, xyz, part, comm, swig_result)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT) :: swig_result
 integer(C_INT32_T), dimension(*), target :: vtxdist
 integer(C_INT32_T), dimension(*), target :: ndims
 real(C_FLOAT), dimension(*), target :: xyz
 integer(C_INT32_T), dimension(*), target :: part
 integer(C_INT), intent(in) :: comm
+integer(C_INT), intent(out), optional :: swig_result
 integer(C_INT) :: fresult 
 type(C_PTR) :: farg1 
 type(C_PTR) :: farg2 
@@ -432,14 +437,15 @@ farg3 = c_loc(xyz)
 farg4 = c_loc(part)
 farg5 = comm
 fresult = swigc_PartGeom(farg1, farg2, farg3, farg4, farg5)
+if (present(swig_result)) then
 swig_result = fresult
-end function
+endif
 
-function RefineKway(vtxdist, xadj, adjncy, vwgt, adjwgt, wgtflag, numflag, ncon, nparts, tpwgts, ubvec, options, edgecut, &
-  part, comm) &
-result(swig_result)
+end subroutine
+
+subroutine RefineKway(vtxdist, xadj, adjncy, vwgt, adjwgt, wgtflag, numflag, ncon, nparts, tpwgts, ubvec, options, edgecut, &
+  part, comm, swig_result)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT) :: swig_result
 integer(C_INT32_T), dimension(*), target :: vtxdist
 integer(C_INT32_T), dimension(*), target :: xadj
 integer(C_INT32_T), dimension(*), target :: adjncy
@@ -455,6 +461,7 @@ integer(C_INT32_T), dimension(*), target :: options
 integer(C_INT32_T), dimension(*), target :: edgecut
 integer(C_INT32_T), dimension(*), target :: part
 integer(C_INT), intent(in) :: comm
+integer(C_INT), intent(out), optional :: swig_result
 integer(C_INT) :: fresult 
 type(C_PTR) :: farg1 
 type(C_PTR) :: farg2 
@@ -489,14 +496,15 @@ farg14 = c_loc(part)
 farg15 = comm
 fresult = swigc_RefineKway(farg1, farg2, farg3, farg4, farg5, farg6, farg7, farg8, farg9, farg10, farg11, farg12, farg13, &
   farg14, farg15)
+if (present(swig_result)) then
 swig_result = fresult
-end function
+endif
 
-function AdaptiveRepart(vtxdist, xadj, adjncy, vwgt, vsize, adjwgt, wgtflag, numflag, ncon, nparts, tpwgts, ubvec, ipc2redist, &
-  options, edgecut, part, comm) &
-result(swig_result)
+end subroutine
+
+subroutine AdaptiveRepart(vtxdist, xadj, adjncy, vwgt, vsize, adjwgt, wgtflag, numflag, ncon, nparts, tpwgts, ubvec, &
+  ipc2redist, options, edgecut, part, comm, swig_result)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT) :: swig_result
 integer(C_INT32_T), dimension(*), target :: vtxdist
 integer(C_INT32_T), dimension(*), target :: xadj
 integer(C_INT32_T), dimension(*), target :: adjncy
@@ -514,6 +522,7 @@ integer(C_INT32_T), dimension(*), target :: options
 integer(C_INT32_T), dimension(*), target :: edgecut
 integer(C_INT32_T), dimension(*), target :: part
 integer(C_INT), intent(in) :: comm
+integer(C_INT), intent(out), optional :: swig_result
 integer(C_INT) :: fresult 
 type(C_PTR) :: farg1 
 type(C_PTR) :: farg2 
@@ -552,13 +561,14 @@ farg16 = c_loc(part)
 farg17 = comm
 fresult = swigc_AdaptiveRepart(farg1, farg2, farg3, farg4, farg5, farg6, farg7, farg8, farg9, farg10, farg11, farg12, farg13, &
   farg14, farg15, farg16, farg17)
+if (present(swig_result)) then
 swig_result = fresult
-end function
+endif
 
-function Mesh2Dual(elmdist, eptr, eind, numflag, ncommonnodes, xadj, adjncy, comm) &
-result(swig_result)
+end subroutine
+
+subroutine Mesh2Dual(elmdist, eptr, eind, numflag, ncommonnodes, xadj, adjncy, comm, swig_result)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT) :: swig_result
 integer(C_INT32_T), dimension(*), target :: elmdist
 integer(C_INT32_T), dimension(*), target :: eptr
 integer(C_INT32_T), dimension(*), target :: eind
@@ -567,6 +577,7 @@ integer(C_INT32_T), dimension(*), target :: ncommonnodes
 class(SWIGTYPE_p_p_int32_t), intent(in) :: xadj
 class(SWIGTYPE_p_p_int32_t), intent(in) :: adjncy
 integer(C_INT), intent(in) :: comm
+integer(C_INT), intent(out), optional :: swig_result
 integer(C_INT) :: fresult 
 type(C_PTR) :: farg1 
 type(C_PTR) :: farg2 
@@ -586,14 +597,15 @@ farg6 = xadj%swigdata
 farg7 = adjncy%swigdata
 farg8 = comm
 fresult = swigc_Mesh2Dual(farg1, farg2, farg3, farg4, farg5, farg6, farg7, farg8)
+if (present(swig_result)) then
 swig_result = fresult
-end function
+endif
 
-function PartMeshKway(elmdist, eptr, eind, elmwgt, wgtflag, numflag, ncon, ncommonnodes, nparts, tpwgts, ubvec, options, &
-  edgecut, part, comm) &
-result(swig_result)
+end subroutine
+
+subroutine PartMeshKway(elmdist, eptr, eind, elmwgt, wgtflag, numflag, ncon, ncommonnodes, nparts, tpwgts, ubvec, options, &
+  edgecut, part, comm, swig_result)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT) :: swig_result
 integer(C_INT32_T), dimension(*), target :: elmdist
 integer(C_INT32_T), dimension(*), target :: eptr
 integer(C_INT32_T), dimension(*), target :: eind
@@ -609,6 +621,7 @@ integer(C_INT32_T), dimension(*), target :: options
 integer(C_INT32_T), dimension(*), target :: edgecut
 integer(C_INT32_T), dimension(*), target :: part
 integer(C_INT), intent(in) :: comm
+integer(C_INT), intent(out), optional :: swig_result
 integer(C_INT) :: fresult 
 type(C_PTR) :: farg1 
 type(C_PTR) :: farg2 
@@ -643,13 +656,14 @@ farg14 = c_loc(part)
 farg15 = comm
 fresult = swigc_PartMeshKway(farg1, farg2, farg3, farg4, farg5, farg6, farg7, farg8, farg9, farg10, farg11, farg12, farg13, &
   farg14, farg15)
+if (present(swig_result)) then
 swig_result = fresult
-end function
+endif
 
-function NodeND(vtxdist, xadj, adjncy, numflag, options, order, sizes, comm) &
-result(swig_result)
+end subroutine
+
+subroutine NodeND(vtxdist, xadj, adjncy, numflag, options, order, sizes, comm, swig_result)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT) :: swig_result
 integer(C_INT32_T), dimension(*), target :: vtxdist
 integer(C_INT32_T), dimension(*), target :: xadj
 integer(C_INT32_T), dimension(*), target :: adjncy
@@ -658,6 +672,7 @@ integer(C_INT32_T), dimension(*), target :: options
 integer(C_INT32_T), dimension(*), target :: order
 integer(C_INT32_T), dimension(*), target :: sizes
 integer(C_INT), intent(in) :: comm
+integer(C_INT), intent(out), optional :: swig_result
 integer(C_INT) :: fresult 
 type(C_PTR) :: farg1 
 type(C_PTR) :: farg2 
@@ -677,14 +692,15 @@ farg6 = c_loc(order)
 farg7 = c_loc(sizes)
 farg8 = comm
 fresult = swigc_NodeND(farg1, farg2, farg3, farg4, farg5, farg6, farg7, farg8)
+if (present(swig_result)) then
 swig_result = fresult
-end function
+endif
 
-function NodeND2(vtxdist, xadj, adjncy, vwgt, numflag, mtype, rtype, p_nseps, s_nseps, ubfrac, seed, dbglvl, order, sizes, &
-  comm) &
-result(swig_result)
+end subroutine
+
+subroutine NodeND2(vtxdist, xadj, adjncy, vwgt, numflag, mtype, rtype, p_nseps, s_nseps, ubfrac, seed, dbglvl, order, sizes, &
+  comm, swig_result)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT) :: swig_result
 integer(C_INT32_T), dimension(*), target :: vtxdist
 integer(C_INT32_T), dimension(*), target :: xadj
 integer(C_INT32_T), dimension(*), target :: adjncy
@@ -700,6 +716,7 @@ integer(C_INT32_T), dimension(*), target :: dbglvl
 integer(C_INT32_T), dimension(*), target :: order
 integer(C_INT32_T), dimension(*), target :: sizes
 integer(C_INT), intent(in) :: comm
+integer(C_INT), intent(out), optional :: swig_result
 integer(C_INT) :: fresult 
 type(C_PTR) :: farg1 
 type(C_PTR) :: farg2 
@@ -734,13 +751,14 @@ farg14 = c_loc(sizes)
 farg15 = comm
 fresult = swigc_NodeND2(farg1, farg2, farg3, farg4, farg5, farg6, farg7, farg8, farg9, farg10, farg11, farg12, farg13, farg14, &
   farg15)
+if (present(swig_result)) then
 swig_result = fresult
-end function
+endif
 
-function SerialNodeND(vtxdist, xadj, adjncy, numflag, options, order, sizes, comm) &
-result(swig_result)
+end subroutine
+
+subroutine SerialNodeND(vtxdist, xadj, adjncy, numflag, options, order, sizes, comm, swig_result)
 use, intrinsic :: ISO_C_BINDING
-integer(C_INT) :: swig_result
 integer(C_INT32_T), dimension(*), target :: vtxdist
 integer(C_INT32_T), dimension(*), target :: xadj
 integer(C_INT32_T), dimension(*), target :: adjncy
@@ -749,6 +767,7 @@ integer(C_INT32_T), dimension(*), target :: options
 integer(C_INT32_T), dimension(*), target :: order
 integer(C_INT32_T), dimension(*), target :: sizes
 integer(C_INT), intent(in) :: comm
+integer(C_INT), intent(out), optional :: swig_result
 integer(C_INT) :: fresult 
 type(C_PTR) :: farg1 
 type(C_PTR) :: farg2 
@@ -768,8 +787,11 @@ farg6 = c_loc(order)
 farg7 = c_loc(sizes)
 farg8 = comm
 fresult = swigc_SerialNodeND(farg1, farg2, farg3, farg4, farg5, farg6, farg7, farg8)
+if (present(swig_result)) then
 swig_result = fresult
-end function
+endif
+
+end subroutine
 
 
 end module

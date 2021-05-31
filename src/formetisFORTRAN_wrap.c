@@ -159,6 +159,12 @@
  { printf("In " DECL ": " MSG); assert(0); RETURNNULL; }
 
 
+enum {
+    SWIG_MEM_OWN = 0x01,
+    SWIG_MEM_RVALUE = 0x02,
+};
+
+
 #include <stdio.h>
 #if (defined(_MSC_VER) && (_MSC_VER < 1900)) || defined(__BORLANDC__) || defined(_WATCOM)
 # ifndef snprintf
@@ -224,6 +230,20 @@ SWIGINTERN SwigArrayWrapper SwigArrayWrapper_uninitialized() {
 #include <metis.h>
 
 
+typedef struct {
+    void* cptr;
+    int cmemflags;
+} SwigClassWrapper;
+
+
+SWIGINTERN SwigClassWrapper SwigClassWrapper_uninitialized() {
+    SwigClassWrapper result;
+    result.cptr = NULL;
+    result.cmemflags = 0;
+    return result;
+}
+
+
 #define FORMETIS_INT_SIZE 32
 #define FORMETIS_REAL_SIZE 32
 
@@ -240,6 +260,322 @@ SWIGEXPORT SwigArrayWrapper _wrap_formetis_version_get() {
   result = (char *)(char *)formetis_version;
   fresult.size = strlen((char*)(result));
   fresult.data = (char *)(result);
+  return fresult;
+}
+
+
+SWIGEXPORT int _wrap_PartGraphRecursive(int32_t *farg1, int32_t *farg2, int32_t *farg3, int32_t *farg4, int32_t *farg5, int32_t *farg6, int32_t *farg7, int32_t *farg8, float *farg9, float *farg10, int32_t *farg11, int32_t *farg12, int32_t *farg13) {
+  int fresult ;
+  idx_t *arg1 = (idx_t *) 0 ;
+  idx_t *arg2 = (idx_t *) 0 ;
+  idx_t *arg3 = (idx_t *) 0 ;
+  idx_t *arg4 = (idx_t *) 0 ;
+  idx_t *arg5 = (idx_t *) 0 ;
+  idx_t *arg6 = (idx_t *) 0 ;
+  idx_t *arg7 = (idx_t *) 0 ;
+  idx_t *arg8 = (idx_t *) 0 ;
+  real_t *arg9 = (real_t *) 0 ;
+  real_t *arg10 = (real_t *) 0 ;
+  idx_t *arg11 = (idx_t *) 0 ;
+  idx_t *arg12 = (idx_t *) 0 ;
+  idx_t *arg13 = (idx_t *) 0 ;
+  int result;
+  
+  arg1 = (idx_t *)(farg1);
+  arg2 = (idx_t *)(farg2);
+  arg3 = (idx_t *)(farg3);
+  arg4 = (idx_t *)(farg4);
+  arg5 = (idx_t *)(farg5);
+  arg6 = (idx_t *)(farg6);
+  arg7 = (idx_t *)(farg7);
+  arg8 = (idx_t *)(farg8);
+  arg9 = (real_t *)(farg9);
+  arg10 = (real_t *)(farg10);
+  arg11 = (idx_t *)(farg11);
+  arg12 = (idx_t *)(farg12);
+  arg13 = (idx_t *)(farg13);
+  result = (int)METIS_PartGraphRecursive(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13);
+  fresult = (int)(result);
+  return fresult;
+}
+
+
+SWIGEXPORT int _wrap_PartGraphKway(int32_t *farg1, int32_t *farg2, int32_t *farg3, int32_t *farg4, int32_t *farg5, int32_t *farg6, int32_t *farg7, int32_t *farg8, float *farg9, float *farg10, int32_t *farg11, int32_t *farg12, int32_t *farg13) {
+  int fresult ;
+  idx_t *arg1 = (idx_t *) 0 ;
+  idx_t *arg2 = (idx_t *) 0 ;
+  idx_t *arg3 = (idx_t *) 0 ;
+  idx_t *arg4 = (idx_t *) 0 ;
+  idx_t *arg5 = (idx_t *) 0 ;
+  idx_t *arg6 = (idx_t *) 0 ;
+  idx_t *arg7 = (idx_t *) 0 ;
+  idx_t *arg8 = (idx_t *) 0 ;
+  real_t *arg9 = (real_t *) 0 ;
+  real_t *arg10 = (real_t *) 0 ;
+  idx_t *arg11 = (idx_t *) 0 ;
+  idx_t *arg12 = (idx_t *) 0 ;
+  idx_t *arg13 = (idx_t *) 0 ;
+  int result;
+  
+  arg1 = (idx_t *)(farg1);
+  arg2 = (idx_t *)(farg2);
+  arg3 = (idx_t *)(farg3);
+  arg4 = (idx_t *)(farg4);
+  arg5 = (idx_t *)(farg5);
+  arg6 = (idx_t *)(farg6);
+  arg7 = (idx_t *)(farg7);
+  arg8 = (idx_t *)(farg8);
+  arg9 = (real_t *)(farg9);
+  arg10 = (real_t *)(farg10);
+  arg11 = (idx_t *)(farg11);
+  arg12 = (idx_t *)(farg12);
+  arg13 = (idx_t *)(farg13);
+  result = (int)METIS_PartGraphKway(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13);
+  fresult = (int)(result);
+  return fresult;
+}
+
+
+SWIGEXPORT int _wrap_MeshToDual(int32_t *farg1, int32_t *farg2, int32_t *farg3, int32_t *farg4, int32_t *farg5, int32_t *farg6, SwigClassWrapper *farg7, SwigClassWrapper *farg8) {
+  int fresult ;
+  idx_t *arg1 = (idx_t *) 0 ;
+  idx_t *arg2 = (idx_t *) 0 ;
+  idx_t *arg3 = (idx_t *) 0 ;
+  idx_t *arg4 = (idx_t *) 0 ;
+  idx_t *arg5 = (idx_t *) 0 ;
+  idx_t *arg6 = (idx_t *) 0 ;
+  idx_t **arg7 = (idx_t **) 0 ;
+  idx_t **arg8 = (idx_t **) 0 ;
+  int result;
+  
+  arg1 = (idx_t *)(farg1);
+  arg2 = (idx_t *)(farg2);
+  arg3 = (idx_t *)(farg3);
+  arg4 = (idx_t *)(farg4);
+  arg5 = (idx_t *)(farg5);
+  arg6 = (idx_t *)(farg6);
+  arg7 = (idx_t **)farg7->cptr;
+  arg8 = (idx_t **)farg8->cptr;
+  result = (int)METIS_MeshToDual(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+  fresult = (int)(result);
+  return fresult;
+}
+
+
+SWIGEXPORT int _wrap_MeshToNodal(int32_t *farg1, int32_t *farg2, int32_t *farg3, int32_t *farg4, int32_t *farg5, SwigClassWrapper *farg6, SwigClassWrapper *farg7) {
+  int fresult ;
+  idx_t *arg1 = (idx_t *) 0 ;
+  idx_t *arg2 = (idx_t *) 0 ;
+  idx_t *arg3 = (idx_t *) 0 ;
+  idx_t *arg4 = (idx_t *) 0 ;
+  idx_t *arg5 = (idx_t *) 0 ;
+  idx_t **arg6 = (idx_t **) 0 ;
+  idx_t **arg7 = (idx_t **) 0 ;
+  int result;
+  
+  arg1 = (idx_t *)(farg1);
+  arg2 = (idx_t *)(farg2);
+  arg3 = (idx_t *)(farg3);
+  arg4 = (idx_t *)(farg4);
+  arg5 = (idx_t *)(farg5);
+  arg6 = (idx_t **)farg6->cptr;
+  arg7 = (idx_t **)farg7->cptr;
+  result = (int)METIS_MeshToNodal(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+  fresult = (int)(result);
+  return fresult;
+}
+
+
+SWIGEXPORT int _wrap_PartMeshNodal(int32_t *farg1, int32_t *farg2, int32_t *farg3, int32_t *farg4, int32_t *farg5, int32_t *farg6, int32_t *farg7, float *farg8, int32_t *farg9, int32_t *farg10, int32_t *farg11, int32_t *farg12) {
+  int fresult ;
+  idx_t *arg1 = (idx_t *) 0 ;
+  idx_t *arg2 = (idx_t *) 0 ;
+  idx_t *arg3 = (idx_t *) 0 ;
+  idx_t *arg4 = (idx_t *) 0 ;
+  idx_t *arg5 = (idx_t *) 0 ;
+  idx_t *arg6 = (idx_t *) 0 ;
+  idx_t *arg7 = (idx_t *) 0 ;
+  real_t *arg8 = (real_t *) 0 ;
+  idx_t *arg9 = (idx_t *) 0 ;
+  idx_t *arg10 = (idx_t *) 0 ;
+  idx_t *arg11 = (idx_t *) 0 ;
+  idx_t *arg12 = (idx_t *) 0 ;
+  int result;
+  
+  arg1 = (idx_t *)(farg1);
+  arg2 = (idx_t *)(farg2);
+  arg3 = (idx_t *)(farg3);
+  arg4 = (idx_t *)(farg4);
+  arg5 = (idx_t *)(farg5);
+  arg6 = (idx_t *)(farg6);
+  arg7 = (idx_t *)(farg7);
+  arg8 = (real_t *)(farg8);
+  arg9 = (idx_t *)(farg9);
+  arg10 = (idx_t *)(farg10);
+  arg11 = (idx_t *)(farg11);
+  arg12 = (idx_t *)(farg12);
+  result = (int)METIS_PartMeshNodal(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12);
+  fresult = (int)(result);
+  return fresult;
+}
+
+
+SWIGEXPORT int _wrap_PartMeshDual(int32_t *farg1, int32_t *farg2, int32_t *farg3, int32_t *farg4, int32_t *farg5, int32_t *farg6, int32_t *farg7, int32_t *farg8, float *farg9, int32_t *farg10, int32_t *farg11, int32_t *farg12, int32_t *farg13) {
+  int fresult ;
+  idx_t *arg1 = (idx_t *) 0 ;
+  idx_t *arg2 = (idx_t *) 0 ;
+  idx_t *arg3 = (idx_t *) 0 ;
+  idx_t *arg4 = (idx_t *) 0 ;
+  idx_t *arg5 = (idx_t *) 0 ;
+  idx_t *arg6 = (idx_t *) 0 ;
+  idx_t *arg7 = (idx_t *) 0 ;
+  idx_t *arg8 = (idx_t *) 0 ;
+  real_t *arg9 = (real_t *) 0 ;
+  idx_t *arg10 = (idx_t *) 0 ;
+  idx_t *arg11 = (idx_t *) 0 ;
+  idx_t *arg12 = (idx_t *) 0 ;
+  idx_t *arg13 = (idx_t *) 0 ;
+  int result;
+  
+  arg1 = (idx_t *)(farg1);
+  arg2 = (idx_t *)(farg2);
+  arg3 = (idx_t *)(farg3);
+  arg4 = (idx_t *)(farg4);
+  arg5 = (idx_t *)(farg5);
+  arg6 = (idx_t *)(farg6);
+  arg7 = (idx_t *)(farg7);
+  arg8 = (idx_t *)(farg8);
+  arg9 = (real_t *)(farg9);
+  arg10 = (idx_t *)(farg10);
+  arg11 = (idx_t *)(farg11);
+  arg12 = (idx_t *)(farg12);
+  arg13 = (idx_t *)(farg13);
+  result = (int)METIS_PartMeshDual(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13);
+  fresult = (int)(result);
+  return fresult;
+}
+
+
+SWIGEXPORT int _wrap_NodeND(int32_t *farg1, int32_t *farg2, int32_t *farg3, int32_t *farg4, int32_t *farg5, int32_t *farg6, int32_t *farg7) {
+  int fresult ;
+  idx_t *arg1 = (idx_t *) 0 ;
+  idx_t *arg2 = (idx_t *) 0 ;
+  idx_t *arg3 = (idx_t *) 0 ;
+  idx_t *arg4 = (idx_t *) 0 ;
+  idx_t *arg5 = (idx_t *) 0 ;
+  idx_t *arg6 = (idx_t *) 0 ;
+  idx_t *arg7 = (idx_t *) 0 ;
+  int result;
+  
+  arg1 = (idx_t *)(farg1);
+  arg2 = (idx_t *)(farg2);
+  arg3 = (idx_t *)(farg3);
+  arg4 = (idx_t *)(farg4);
+  arg5 = (idx_t *)(farg5);
+  arg6 = (idx_t *)(farg6);
+  arg7 = (idx_t *)(farg7);
+  result = (int)METIS_NodeND(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+  fresult = (int)(result);
+  return fresult;
+}
+
+
+SWIGEXPORT int _wrap_Free(void const **farg1) {
+  int fresult ;
+  void *arg1 = (void *) 0 ;
+  int result;
+  
+  arg1 = (void *)(*farg1);
+  result = (int)METIS_Free(arg1);
+  fresult = (int)(result);
+  return fresult;
+}
+
+
+SWIGEXPORT int _wrap_SetDefaultOptions(int32_t *farg1) {
+  int fresult ;
+  idx_t *arg1 = (idx_t *) 0 ;
+  int result;
+  
+  arg1 = (idx_t *)(farg1);
+  result = (int)METIS_SetDefaultOptions(arg1);
+  fresult = (int)(result);
+  return fresult;
+}
+
+
+SWIGEXPORT int _wrap_NodeNDP(int32_t const *farg1, int32_t *farg2, int32_t *farg3, int32_t *farg4, int32_t const *farg5, int32_t *farg6, int32_t *farg7, int32_t *farg8, int32_t *farg9) {
+  int fresult ;
+  idx_t arg1 ;
+  idx_t *arg2 = (idx_t *) 0 ;
+  idx_t *arg3 = (idx_t *) 0 ;
+  idx_t *arg4 = (idx_t *) 0 ;
+  idx_t arg5 ;
+  idx_t *arg6 = (idx_t *) 0 ;
+  idx_t *arg7 = (idx_t *) 0 ;
+  idx_t *arg8 = (idx_t *) 0 ;
+  idx_t *arg9 = (idx_t *) 0 ;
+  int result;
+  
+  arg1 = (idx_t)(*farg1);
+  arg2 = (idx_t *)(farg2);
+  arg3 = (idx_t *)(farg3);
+  arg4 = (idx_t *)(farg4);
+  arg5 = (idx_t)(*farg5);
+  arg6 = (idx_t *)(farg6);
+  arg7 = (idx_t *)(farg7);
+  arg8 = (idx_t *)(farg8);
+  arg9 = (idx_t *)(farg9);
+  result = (int)METIS_NodeNDP(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
+  fresult = (int)(result);
+  return fresult;
+}
+
+
+SWIGEXPORT int _wrap_ComputeVertexSeparator(int32_t *farg1, int32_t *farg2, int32_t *farg3, int32_t *farg4, int32_t *farg5, int32_t *farg6, int32_t *farg7) {
+  int fresult ;
+  idx_t *arg1 = (idx_t *) 0 ;
+  idx_t *arg2 = (idx_t *) 0 ;
+  idx_t *arg3 = (idx_t *) 0 ;
+  idx_t *arg4 = (idx_t *) 0 ;
+  idx_t *arg5 = (idx_t *) 0 ;
+  idx_t *arg6 = (idx_t *) 0 ;
+  idx_t *arg7 = (idx_t *) 0 ;
+  int result;
+  
+  arg1 = (idx_t *)(farg1);
+  arg2 = (idx_t *)(farg2);
+  arg3 = (idx_t *)(farg3);
+  arg4 = (idx_t *)(farg4);
+  arg5 = (idx_t *)(farg5);
+  arg6 = (idx_t *)(farg6);
+  arg7 = (idx_t *)(farg7);
+  result = (int)METIS_ComputeVertexSeparator(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+  fresult = (int)(result);
+  return fresult;
+}
+
+
+SWIGEXPORT int _wrap_NodeRefine(int32_t const *farg1, int32_t *farg2, int32_t *farg3, int32_t *farg4, int32_t *farg5, int32_t *farg6, float const *farg7) {
+  int fresult ;
+  idx_t arg1 ;
+  idx_t *arg2 = (idx_t *) 0 ;
+  idx_t *arg3 = (idx_t *) 0 ;
+  idx_t *arg4 = (idx_t *) 0 ;
+  idx_t *arg5 = (idx_t *) 0 ;
+  idx_t *arg6 = (idx_t *) 0 ;
+  real_t arg7 ;
+  int result;
+  
+  arg1 = (idx_t)(*farg1);
+  arg2 = (idx_t *)(farg2);
+  arg3 = (idx_t *)(farg3);
+  arg4 = (idx_t *)(farg4);
+  arg5 = (idx_t *)(farg5);
+  arg6 = (idx_t *)(farg6);
+  arg7 = (real_t)(*farg7);
+  result = (int)METIS_NodeRefine(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+  fresult = (int)(result);
   return fresult;
 }
 

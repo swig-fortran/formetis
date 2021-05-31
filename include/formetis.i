@@ -38,17 +38,14 @@ extern const int formetis_version_patch;
 #include <metis.h>
 %}
 
-// Directly bind all API functions
-%fortranbindc;
 // Use parameters rather than linked constants
 %fortranconst;
 
-// Apply array maps to pointers
-%typemap(bindc, in="$typemap(bindc, $1_basetype), dimension(*), target") real_t* ,  idx_t*
- "$typemap(bindc, $1_basetype), dimension(*)";
-
 // Remove METIS_ prefix from bindings
 %rename("%(strip:[METIS_])s") "";
+
+// All "functions" are really subroutines with return values
+%fortransubroutine;
 
 %include <metis.h>
 

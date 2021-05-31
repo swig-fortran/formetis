@@ -35,21 +35,7 @@
 // Remove ParMETIS_V3 prefix from bindings
 %rename("%(regex:/^ParMETIS(_V3)?(2)?_(.*)/\\3\\2/)s") "";
 
-// Apply array maps to pointers
-%typemap(ftype, in="$typemap(bindc, $1_basetype), dimension(*), target") real_t*, idx_t*
- "$typemap(bindc, $1_basetype), dimension(*)";
-%typemap(imtype, in="type(C_PTR), value") real_t*, idx_t*
- "type(C_PTR)";
-%typemap(ctype) real_t*, idx_t*
-  "$typemap(ctype, $*1_ltype)*";
-%typemap(in,  noblock=1) real_t*, idx_t* {
-   $1 = ($1_ltype)($input);
-}
-%typemap(out) real_t*, idx_t*
-  "$result = $1;"
-%typemap(fin) real_t*, idx_t*
-  "$1 = c_loc($input)"
-%typemap(fout) real_t*, idx_t*
-  "call c_f_pointer($1, $result)"
+// All "functions" are really subroutines with return values
+%fortransubroutine;
 
 %include <parmetis.h>
