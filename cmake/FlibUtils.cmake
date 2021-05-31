@@ -112,13 +112,13 @@ function(flib_fortran_standard prefix)
 endfunction()
 
 #-----------------------------------------------------------------------------#
+# Note: this must appear at CMakeLists level, not macro level
+if(CMAKE_VERSION VERSION_LESS 3.18)
+  list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/backport-cmake-318")
+endif()
 
 macro(flib_find_and_use_swig prefix)
   flib_warn_undefined(${prefix}_USE_SWIG)
-
-  if(CMAKE_VERSION VERSION_LESS 3.18)
-    list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/backport-cmake-318")
-  endif()
 
   if(${prefix}_USE_SWIG)
     if(NOT SWIG_fortran_FOUND)
