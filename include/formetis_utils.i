@@ -21,7 +21,7 @@
 %enddef
 
 // Apply array maps to pointers
-%typemap(ftype, in="$typemap(bindc, $1_basetype), dimension(*), target") real_t*, idx_t*
+%typemap(ftype, in="$typemap(bindc, $1_basetype), dimension(*), target, optional") real_t*, idx_t*
  "$typemap(bindc, $1_basetype), dimension(*)";
 %typemap(imtype, in="type(C_PTR), value") real_t*, idx_t*
  "type(C_PTR)";
@@ -32,10 +32,15 @@
 }
 %typemap(out) real_t*, idx_t*
   "$result = $1;"
-%typemap(fin) real_t*, idx_t*
-  "$1 = c_loc($input)"
+%typemap(fin, noblock=1) real_t*, idx_t* {
+  if (present($input)) then
+    $1 = c_loc($input)
+  else
+    $1 = C_NULL_PTR
+  endif
+}
 %typemap(fout) real_t*, idx_t*
-  "call c_f_pointer($1, $result)"
+  "call c_f_pointer($1, $result)";
 
 // Apply array maps to pointers (bindc mode)
 %typemap(bindc, in="$typemap(bindc, $1_basetype), dimension(*), target") real_t* ,  idx_t*
